@@ -5,6 +5,7 @@ $color--white: #FBFBFB;
 $color--blue: #00A5D5;
 $color--pink: #EE86A8;
 $color--yellow: #EED786;
+$color--sepia: #E5C9AD;
 $font__sans-serif: "azo-sans-web", "helvetica", sans-serif;
 $font__sans-serif--weight--regular: 400;
 $font__sans-serif--weight--medium: 500;
@@ -34,11 +35,28 @@ $transition: 0.5s;
 // STRUCTURE (xs)
 .section {
 	align-items: center;
-	background-color: #E5C9AD;
+	background-color: $color--sepia;
 	display: flex;
 	height: 100vh;
 	justify-content: center;
 	width: 100%;
+}
+%cover {
+	background-color: $color--sepia;
+	height: 12.5vh;
+	position: fixed;
+	width: 100%;
+	z-index: 2;
+}
+.cover-- {
+	&top {
+		@extend %cover;
+		top: 0;
+	}
+	&bottom {
+		@extend %cover;
+		bottom: 0;
+	}
 }
 
 // IMAGE (xs)
@@ -47,12 +65,12 @@ $transition: 0.5s;
 	max-height: 660px;
 	width: auto;
 	z-index: 1;
-	&--locked{
-		position: fixed;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
+}
+.activated{
+	left: 50%;
+	position: fixed;
+	top: 50%;
+	transform: translate(-50%, -50%);
 }
 
 // TYPOGRAPHY (xs)

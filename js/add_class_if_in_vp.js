@@ -5,7 +5,7 @@ $(document).ready(function () {
 
 
 var debounceFunction = (function() {
-	var	interval = 1,
+	var	interval = 0,
 		timer;
 
 	return function() {
@@ -13,33 +13,21 @@ var debounceFunction = (function() {
 		timer = setTimeout(function() {
 
 			function isScrolledIntoView(element) {
-				var	markerWindowTop = window.innerHeight*0.15,
-					markerWindowBottom = window.innerHeight*0.85,				
-					elementCenterVertical = ($(element).offset().top + $(element).outerHeight()/2) - ($(window).scrollTop());
-
+				var	activationLine = window.innerHeight/2 + 25,
+						activationMarker = ($(element).offset().top + $(element).outerHeight()/2) - ($(window).scrollTop());
 				// Code that I used to confirm the output of each variable 
-				// console.log(elementCenterVertical);
-				// console.log( (elementCenterVertical >= markerWindowTop) );
-				// console.log( (elementCenterVertical <= markerWindowBottom) );
-				// console.log( (elementCenterVertical >= markerWindowTop) && (elementCenterVertical <= markerWindowBottom) );
-
-				return ((elementCenterVertical >= markerWindowTop) && (elementCenterVertical <= markerWindowBottom));
+					// console.log("activationLine is at " + activationLine);
+					// console.log("activationMarker is at " + activationMarker);
+					// console.log(activationLine >= activationMarker);
+				return (activationLine >= activationMarker);
 			}
 
-			// Code that I used to confirm the output of each variable 
-			// console.log( 'markerTop is ' + window.innerHeight*0.25 );
-			// console.log( 'markerBottom is ' + window.innerHeight*0.75 );
-			// console.log( 'Scroll dist from top is ' + $(window).scrollTop() );
-			// console.log( 'The distance of #3 is ' + ( ($('#section__3').offset().top) + ($('#section__3').outerHeight()/2) - ($(window).scrollTop()) ) + ' from the top of the window' );
-
-			$('.text').each(function() {
-
-				if (isScrolledIntoView(this) === true) {
+			$('.section').each(function() {
 				// I added the '===true' for clarity, it works without it.
-
-					$(this).addClass('text--active');
-				} else {
-					$(this).removeClass('text--active');
+				if (isScrolledIntoView(this) === true) {
+					$(this).find('.eiffel__image').addClass('activated');
+					} else {
+					$(this).find('.eiffel__image').removeClass('activated');					
 				}
 			});
 
