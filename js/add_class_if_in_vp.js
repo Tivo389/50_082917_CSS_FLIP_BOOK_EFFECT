@@ -5,7 +5,7 @@ $(document).ready(function () {
 
 
 var debounceFunction = (function() {
-	var	interval = 0,
+	var	interval = 5,
 		timer;
 
 	return function() {
@@ -13,8 +13,10 @@ var debounceFunction = (function() {
 		timer = setTimeout(function() {
 
 			function isScrolledIntoView(element) {
-				var	activationLine = window.innerHeight/2 + 25,
-						activationMarker = ($(element).offset().top + $(element).outerHeight()/2) - ($(window).scrollTop());
+						// The activation Line has been set to the middle of the window height.
+				var	activationLine = window.innerHeight/2,
+						// The Marker has been adjusted to be at the bottom of each element.
+						activationMarker = ($(element).offset().top + $(element).outerHeight()) - ($(window).scrollTop());
 				// Code that I used to confirm the output of each variable 
 					// console.log("activationLine is at " + activationLine);
 					// console.log("activationMarker is at " + activationMarker);
@@ -22,7 +24,7 @@ var debounceFunction = (function() {
 				return (activationLine >= activationMarker);
 			}
 
-			$('.section').each(function() {
+			$('.eiffel__section').each(function() {
 				// I added the '===true' for clarity, it works without it.
 				if (isScrolledIntoView(this) === true) {
 					$(this).find('.eiffel__image').addClass('activated');

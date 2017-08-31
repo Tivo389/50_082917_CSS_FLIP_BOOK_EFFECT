@@ -5,7 +5,7 @@ $color--white: #FBFBFB;
 $color--blue: #00A5D5;
 $color--pink: #EE86A8;
 $color--yellow: #EED786;
-$color--sepia: #E5C9AD;
+$color--theme: #F2E5D9;
 $font__sans-serif: "azo-sans-web", "helvetica", sans-serif;
 $font__sans-serif--weight--regular: 400;
 $font__sans-serif--weight--medium: 500;
@@ -33,16 +33,40 @@ $transition: 0.5s;
 /*************** xs < 768px (.container @ auto)  ***************/
 
 // STRUCTURE (xs)
+body {
+	background-color: $color--theme;
+}
 .section {
-	align-items: center;
-	background-color: $color--sepia;
-	display: flex;
-	height: 100vh;
-	justify-content: center;
-	width: 100%;
+		align-items: center;
+		display: flex;
+		height: 100vh;
+		justify-content: center;
+		width: 100%;
+		background-color: $color--blue;
+}
+.eiffel {
+	&__section--container {
+		// height: 100vh;
+		// width: 100%;
+		// overflow: hidden;
+	}
+	&__section {
+		align-items: center;
+		display: flex;
+		height: 26vh;
+		justify-content: center;
+		width: 100%;
+	}
+	&__image {
+		height:75vh;
+		max-height: 660px;
+		visibility: hidden;
+		width: auto;
+		z-index: 1;
+	}
 }
 %cover {
-	background-color: $color--sepia;
+	background-color: $color--theme;
 	height: 12.5vh;
 	position: fixed;
 	width: 100%;
@@ -60,17 +84,21 @@ $transition: 0.5s;
 }
 
 // IMAGE (xs)
-.eiffel__image {
-	height:75vh;
-	max-height: 660px;
-	width: auto;
-	z-index: 1;
-}
+/*
+The code below is for the slide-in version. It was cancelled since the effect was visually intense.
 .activated{
 	left: 50%;
 	position: fixed;
 	top: 50%;
 	transform: translate(-50%, -50%);
+}
+*/
+.activated{
+	left: 50%;
+	position: fixed;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	visibility: initial;
 }
 
 // TYPOGRAPHY (xs)
