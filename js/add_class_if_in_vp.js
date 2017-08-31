@@ -13,8 +13,8 @@ var debounceFunction = (function() {
 		timer = setTimeout(function() {
 
 			function isScrolledIntoView(element) {
-						// The activation Line has been set to the middle of the window height.
-				var	activationLine = window.innerHeight/2,
+						// The activation Line has been set to the bottom of the window.
+				var	activationLine = window.innerHeight,
 						// The Marker has been adjusted to be at the bottom of each element.
 						activationMarker = ($(element).offset().top + $(element).outerHeight()) - ($(window).scrollTop());
 				// Code that I used to confirm the output of each variable 

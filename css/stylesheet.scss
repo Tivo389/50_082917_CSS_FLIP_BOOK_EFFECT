@@ -5,7 +5,8 @@ $color--white: #FBFBFB;
 $color--blue: #00A5D5;
 $color--pink: #EE86A8;
 $color--yellow: #EED786;
-$color--theme: #F2E5D9;
+$color--theme-main: #F2E5D9;
+$color--theme-main-dark: #BFB5AC;
 $font__sans-serif: "azo-sans-web", "helvetica", sans-serif;
 $font__sans-serif--weight--regular: 400;
 $font__sans-serif--weight--medium: 500;
@@ -34,7 +35,7 @@ $transition: 0.5s;
 
 // STRUCTURE (xs)
 body {
-	background-color: $color--theme;
+	background-color: $color--theme-main;
 }
 .section {
 		align-items: center;
@@ -42,46 +43,60 @@ body {
 		height: 100vh;
 		justify-content: center;
 		width: 100%;
-		background-color: $color--blue;
+		background-color: $color--theme-main-dark;
 }
 .eiffel {
 	&__section--container {
-		// height: 100vh;
-		// width: 100%;
-		// overflow: hidden;
+		height: 100%;
+		width: 100%;
+		position: relative;
+		z-index: -1;
 	}
 	&__section {
 		align-items: center;
 		display: flex;
-		height: 26vh;
+		height: 10vh;
 		justify-content: center;
 		width: 100%;
+		&:first-child {
+			height: 100vh;
+		}
+		&:last-child {
+			margin-bottom: 100%;
+		}
 	}
 	&__image {
+		border: $color--white solid 15px;
 		height:75vh;
+		left: 50%;
 		max-height: 660px;
+		position: fixed;
+		top: 50%;
+		transform: translate(-50%, -50%);
 		visibility: hidden;
 		width: auto;
-		z-index: 1;
+		&--shadow {
+			box-shadow: $color--theme-main-dark 3px 3px 5px;
+		}
 	}
 }
-%cover {
-	background-color: $color--theme;
-	height: 12.5vh;
-	position: fixed;
-	width: 100%;
-	z-index: 2;
-}
-.cover-- {
-	&top {
-		@extend %cover;
-		top: 0;
-	}
-	&bottom {
-		@extend %cover;
-		bottom: 0;
-	}
-}
+// %cover {
+// 	background-color: $color--theme-main;
+// 	height: 12.5vh;
+// 	position: fixed;
+// 	width: 100%;
+// 	z-index: 2;
+// }
+// .cover-- {
+// 	&top {
+// 		@extend %cover;
+// 		top: 0;
+// 	}
+// 	&bottom {
+// 		@extend %cover;
+// 		bottom: 0;
+// 	}
+// }
 
 // IMAGE (xs)
 /*
@@ -94,20 +109,16 @@ The code below is for the slide-in version. It was cancelled since the effect wa
 }
 */
 .activated{
-	left: 50%;
-	position: fixed;
-	top: 50%;
-	transform: translate(-50%, -50%);
 	visibility: initial;
 }
 
 // TYPOGRAPHY (xs)
 h1, h2, h3, h4, h5, h6, p, a {
-	color: $color--black;
+	color: $color--theme-main;
 	font-family: $font__sans-serif;
 	font-weight: $font__sans-serif--weight--bold;
 	line-height: 135%;
-	font-size: 4.0rem;
+	font-size: 2.5rem;
 	text-align: center;
 }
 p {
